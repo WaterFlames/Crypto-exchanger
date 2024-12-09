@@ -1,6 +1,6 @@
 <template>
     <ul>
-        <li @click="selectItem('BTS')" :class="{ active: current === 'BTS' }"> Bitcoin </li>
+        <li @click="selectItem('BTC')" :class="{ active: current === 'BTC' }"> Bitcoin </li>
         <li @click="selectItem('ETH')" :class="{ active: current === 'ETH' }"> ETH </li>
         <li @click="selectItem('USDT')" :class="{ active: current === 'USDT' }"> USDT </li>
     </ul>

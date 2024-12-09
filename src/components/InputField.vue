@@ -6,19 +6,22 @@
   
 <script>
   export default {
-    props:{
-      changeAmount:{
+    props: {
+      changeAmount: {
         type: Function,
-        required: true
+        required: true,
       },
-
-      convert:{
+      convert: {
         type: Function,
-        required: true
-      }
-    }
- };
-  
+        required: true,
+      },
+    },
+    methods: {
+      handleConvert() {
+        this.convert(); // Вызываем метод из пропса
+      },
+    },
+  };
 </script>
   
 <style>

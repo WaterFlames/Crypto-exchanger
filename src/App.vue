@@ -2,7 +2,7 @@
   <h1>CRYPTO EXCHANGER</h1>
 
   <InputField :changeAmount="changeAmount" :convert="convert"/>
-  <p v-if="error !='' ">{{ error }}</p>
+  <p class="error" v-if="error !='' ">{{ error }}</p>
   <p class="result" v-if="result != 0 ">{{ result }}</p>
 
   <div class="selectors">
@@ -29,7 +29,7 @@ const convert = new CryptoConvert();
         cryptoSecond: '',
         error: '',
         result: 0
-      }
+      };
     },
 
     methods:{
@@ -59,21 +59,24 @@ const convert = new CryptoConvert();
         }
         this.error = '';
 
-        await convert.ready(); //Wait for the initial cache to load
+        try {
+          await convert.ready(); //Wait for the initial cache to load
 
-        if(this.cryptoFirst == 'BTC' && this.cryptoSecond == 'ETH') 
-          this.result = convert.BTC.ETH(this.amount);
-        else if(this.cryptoFirst == 'BTC' && this.cryptoSecond == 'USDT') 
-          this.result = convert.BTC.USDT(this.amount);
-        else if(this.cryptoFirst == 'ETH' && this.cryptoSecond == 'BTC') 
-          this.result = convert.ETH.BTC(this.amount);
-        else if(this.cryptoFirst == 'ETH' && this.cryptoSecond == 'USDT') 
-          this.result = convert.ETH.USDT(this.amount);
-        else if(this.cryptoFirst == 'USDT' && this.cryptoSecond == 'BTC') 
-          this.result = convert.USDT.BTC(this.amount);
-        else if(this.cryptoFirst == 'USDT' && this.cryptoSecond == 'ETH') 
-          this.result = convert.USDT.ETH(this.amount);
-        
+          if(this.cryptoFirst == 'BTC' && this.cryptoSecond == 'ETH') 
+            this.result = convert.BTC.ETH(this.amount);
+          else if(this.cryptoFirst == 'BTC' && this.cryptoSecond == 'USDT') 
+            this.result = convert.BTC.USDT(this.amount);
+          else if(this.cryptoFirst == 'ETH' && this.cryptoSecond == 'BTC') 
+            this.result = convert.ETH.BTC(this.amount);
+          else if(this.cryptoFirst == 'ETH' && this.cryptoSecond == 'USDT') 
+            this.result = convert.ETH.USDT(this.amount);
+          else if(this.cryptoFirst == 'USDT' && this.cryptoSecond == 'BTC') 
+            this.result = convert.USDT.BTC(this.amount);
+          else if(this.cryptoFirst == 'USDT' && this.cryptoSecond == 'ETH') 
+            this.result = convert.USDT.ETH(this.amount);
+        } catch (error) {
+          this.error = 'Conversion failed. Try again later.';
+        }
       }
     }
   }
@@ -85,6 +88,5 @@ const convert = new CryptoConvert();
     margin: 0 auto;
     display: flex;
     justify-content: space-around;
-
   }
 </style>
