@@ -1,6 +1,7 @@
 <template>
   <input type="number" placeholder="This field is waiting for your numbers" min="0" @input="changeAmount($event.target.value)"> <br>
   <button @click="convert()"> Convert </button>
+  <button class="btn-fav" @click="favourite()"> Favourite </button>
 </template>
 
   
@@ -15,7 +16,12 @@
         type: Function,
         required: true,
       },
+      favourite: {
+        type: Function,
+        required: true,
+      },
     },
+
     methods: {
       handleConvert() {
         this.convert(); // Вызываем метод из пропса

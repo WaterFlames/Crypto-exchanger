@@ -23,3 +23,7 @@ h1{
     font-family: 'Montserrat', sans-serif;
     font-size: 1em;
 }
+
+.btn-fav{
+    margin-left: 20px;
+}
