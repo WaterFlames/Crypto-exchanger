@@ -1,5 +1,5 @@
 <template>
-    <!-- current == 'BTC' ? 'active' :'' -->
+    <!-- select currencies -->
     <ul> 
         <li @click="setCrypto('BTC')" :class="cryptoNow == 'BTC' ? 'active' :''"> Bitcoin </li>
         <li @click="setCrypto('ETH')" :class="cryptoNow == 'ETH' ? 'active' :''"> ETH </li>

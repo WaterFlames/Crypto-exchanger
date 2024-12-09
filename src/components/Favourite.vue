@@ -1,6 +1,7 @@
 <template>
     <h2>Favourite list</h2>
 
+    <!-- input 1-rts and 2-nd favourite -->
     <div @click="getFromFavs(index)" v-for="(el, index) in favs" :key="index">
         <span>{{ el.from }}</span>
         <span>{{ el.to }}</span>

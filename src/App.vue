@@ -1,11 +1,13 @@
 <template>
   <h1>CRYPTO EXCHANGER</h1>
 
+  <!-- input, error, result and favorite fields -->
   <InputField :changeAmount="changeAmount" :convert="convert" :favourite="favourite"/>
   <p class="error" v-if="error !='' ">{{ error }}</p>
   <p class="result" v-if="result != 0 ">{{ result }}</p>
   <Favourite :favs="favs" v-if="favs.length > 0" :getFromFavs="getFromFavs"/>
 
+  <!-- currency selection -->
   <div class="selectors">
     <Selector :setCrypto="setCryptoFirst" :cryptoNow="cryptoFirst"/>
     <Selector :setCrypto="setCryptoSecond" :cryptoNow="cryptoSecond"/>
@@ -36,10 +38,12 @@ const convert = new CryptoConvert();
     },
 
     methods:{
+      // entering a number
       changeAmount(val){
         this.amount = val
       },
 
+      // hand over currency 
       setCryptoFirst(val){
         this.cryptoFirst = val
       },
@@ -47,6 +51,7 @@ const convert = new CryptoConvert();
         this.cryptoSecond = val
       },
 
+      // favorites field
       favourite(){
         this.favs.push({
           from: this.cryptoFirst,
@@ -54,14 +59,17 @@ const convert = new CryptoConvert();
         })
       },
 
+      // task 1-rts and 2-nd favorite
       getFromFavs(index){
         this.cryptoFirst = this.favs[index].from
         this.cryptoSecond = this.favs[index].to
       },
 
+      // back and forth converter
       async convert(){
         this.result = 0;
         
+        // checking conditions for an input field
         if(this.amount <= 0){
           this.error = "Enter a number greater than zero";
           return;
@@ -74,6 +82,7 @@ const convert = new CryptoConvert();
         }
         this.error = '';
 
+        // conversion condition
         try {
           await convert.ready(); //Wait for the initial cache to load
 

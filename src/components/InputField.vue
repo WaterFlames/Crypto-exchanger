@@ -1,4 +1,5 @@
 <template>
+  <!-- input fields and convert and favourite btn-->
   <input type="number" placeholder="This field is waiting for your numbers" min="0" @input="changeAmount($event.target.value)"> <br>
   <button @click="convert()"> Convert </button>
   <button class="btn-fav" @click="favourite()"> Favourite </button>
@@ -24,7 +25,8 @@
 
     methods: {
       handleConvert() {
-        this.convert(); // Вызываем метод из пропса
+         // calling a method from a prop
+        this.convert();
       },
     },
   };
